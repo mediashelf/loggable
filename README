@@ -1,0 +1,5 @@
+= Loggable
+
+Loggable is a gem that's designed to add a logging interface to classes that don't automatically support it.
+
+Copyright (c) 2008 Patrick Reagan of Viget Labs (mailto:patrick.reagan@viget.com), released under the MIT license
