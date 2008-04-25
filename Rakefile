@@ -23,9 +23,10 @@ spec = Gem::Specification.new do |s|
   s.author = AUTHOR
   s.email = EMAIL
   s.homepage = HOMEPAGE
+  s.rubyforge_project = 'viget'
   
   s.require_path = 'lib'
-  s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,specs}/**/*")
+  s.files = %w(LICENSE README Rakefile) + Dir.glob("{lib,test}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|

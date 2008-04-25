@@ -1,5 +1,55 @@
 = Loggable
 
-Loggable is a gem that's designed to add a logging interface to classes that don't automatically support it.
+Loggable is a gem that's designed to add a logging interface to classes that don't 
+automatically support it.
 
-Copyright (c) 2008 Patrick Reagan of Viget Labs (mailto:patrick.reagan@viget.com), released under the MIT license
+== Installation
+
+This code is available as a Ruby Gem:
+
+  sudo gem install loggable
+  
+== Usage
+
+Using the Gem is easy, just include the <tt>loggabl</tt> class method in your class 
+to enable it:
+
+  require 'rubygems'
+  require 'logger'
+  require 'loggable'
+  
+  class MyClass
+    loggable
+  end
+
+Now you can assign a logger instance to this class and have it write log messages to
+the specified file:
+
+  MyClass.logger = Logger.new('debug.log')
+  
+Any class or instance methods now have access to the logger:
+
+  class MyClass
+    def self.do_something
+      logger.debug 'doing something in the class'
+    end
+      
+    def do_something
+      logger.debug 'doing something in an instance'
+    end
+  end
+
+The above code will write into the log file when called:
+
+  MyClass.do_something
+  MyClass.new.do_something
+
+  debug.log:
+  
+  D, [2008-04-24T20:37:32.273930 #25821] DEBUG -- : doing something in the class
+  D, [2008-04-24T20:37:32.274062 #25821] DEBUG -- : doing something in an instance
+
+== Credits
+
+Copyright (c) 2008 Patrick Reagan of Viget Labs (mailto:patrick.reagan@viget.com)
+Released under the MIT license
