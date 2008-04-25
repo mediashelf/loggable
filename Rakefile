@@ -17,7 +17,7 @@ spec = Gem::Specification.new do |s|
   s.version = Loggable::VERSION::STRING
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
-  s.extra_rdoc_files = ["README", "LICENSE", 'TODO']
+  s.extra_rdoc_files = ["README", "LICENSE"]
   s.summary = SUMMARY
   s.description = s.summary
   s.author = AUTHOR
@@ -26,7 +26,7 @@ spec = Gem::Specification.new do |s|
   s.rubyforge_project = 'viget'
   
   s.require_path = 'lib'
-  s.files = %w(LICENSE README Rakefile) + Dir.glob("{lib,test}/**/*")
+  s.files = %w(LICENSE README HISTORY Rakefile) + Dir.glob("{lib,test}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
