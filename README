@@ -11,7 +11,7 @@ This code is available as a Ruby Gem:
   
 == Usage
 
-Using the Gem is easy, just include the <tt>loggabl</tt> class method in your class 
+Using the Gem is easy, just include the <tt>loggable</tt> class method in your class 
 to enable it:
 
   require 'rubygems'
