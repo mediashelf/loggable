@@ -2,27 +2,27 @@ module Loggable
   
   module LogMethods
     
-    # Including this in your class definition will add the ability to use a logger within
-    # your class:
+    # Use this method on any of your classes to trigger the logging facility:
     #
-    #  class MyClass
-    #    loggable
-    #  end
-    # 
-    # Now you can assign a logger instance to this class and have it write to the specified
-    # logfile.  See the README for details.
+    #   MyClass.logger = Logger.new('/path/to/logfile)
     #
-    def loggable
+    # Now you can call the 'logger' method inside a class or instance method to log at
+    # the specified level.  See the README for details.
+    #
+    def logger=(logger)
       extend ClassMethods
       include InstanceMethods
+      
+      self.set_logger(logger)
     end
+    
+    def logger; nil; end
+    
   end
   
   module ClassMethods
-    
-    @@logger = nil
-    
-    def logger=(logger)
+
+    def set_logger(logger)
       @@logger = logger
     end
     
