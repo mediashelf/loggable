@@ -1,6 +1,8 @@
 module Loggable
   
-  module LogMethods
+  module ClassMethods
+    
+    @@logger = nil
     
     # Use this method on any of your classes to trigger the logging facility:
     #
@@ -13,21 +15,11 @@ module Loggable
       extend ClassMethods
       include InstanceMethods
       
-      self.set_logger(logger)
-    end
-    
-    def logger; LoggerStub.new; end
-    
-  end
-  
-  module ClassMethods
-
-    def set_logger(logger)
       @@logger = logger
     end
     
     def logger
-      @@logger
+      @@logger || LoggerStub.new
     end
     
   end
