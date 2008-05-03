@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake/gempackagetask'
 require 'rake/testtask'
 
-require 'lib/version'
+require 'lib/loggable/version'
 
 GEM = "loggable"
 AUTHOR = "Patrick Reagan"
