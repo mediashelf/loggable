@@ -11,23 +11,17 @@ This code is available as a Ruby Gem:
   
 == Usage
 
-Using the Gem is easy, just include the <tt>loggable</tt> class method in your class 
-to enable it:
+Using the Gem is easy, just assign a new logger to your class:
 
   require 'rubygems'
   require 'logger'
   require 'loggable'
+
+  class MyClass; end
   
-  class MyClass
-    loggable
-  end
-
-Now you can assign a logger instance to this class and have it write log messages to
-the specified file:
-
   MyClass.logger = Logger.new('debug.log')
-  
-Any class or instance methods now have access to the logger:
+
+Now, any class or instance methods have access to the logger:
 
   class MyClass
     def self.do_something
@@ -48,6 +42,14 @@ The above code will write into the log file when called:
   
   D, [2008-04-24T20:37:32.273930 #25821] DEBUG -- : doing something in the class
   D, [2008-04-24T20:37:32.274062 #25821] DEBUG -- : doing something in an instance
+
+== Removing Logger Functionality
+
+Calling the <tt>logger=</tt> class method to assign a logger to the class will 
+trigger the methods necessary to start logging messages.  If you want to turn off 
+logging temporarily (without removing the logging statements from your class), 
+comment out the line where you assign the new logger.  By default, the logger is
+stubbed out, so any calls to methods on it will just return nil.
 
 == Credits
 
