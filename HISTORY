@@ -1,3 +1,9 @@
+== 0.1.0 2008-05-09
+
+* 2 major enhancements:
+  * Changed the API for using the logging functionality (Class.logger=)
+  * Added in a LoggerStub to intercept calls to a non-existent logging facility
+
 == 0.0.1 2008-04-24
 
 * 1 major enhancement:
