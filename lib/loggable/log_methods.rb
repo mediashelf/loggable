@@ -12,9 +12,6 @@ module Loggable
     # the specified level.  See the README for details.
     #
     def logger=(logger)
-      extend ClassMethods
-      include InstanceMethods
-      
       @@logger = logger
     end
     
