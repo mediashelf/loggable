@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loggable}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Patrick Reagan"]
-  s.date = %q{2009-01-20}
+  s.date = %q{2009-01-21}
   s.email = %q{patrick.reagan@viget.com}
   s.extra_rdoc_files = ["README.rdoc"]
   s.files = ["README.rdoc", "Rakefile", "lib/loggable", "lib/loggable/log_methods.rb", "lib/loggable/logger_stub.rb", "lib/loggable/version.rb", "lib/loggable.rb", "test/examples", "test/examples/log_methods_test.rb", "test/examples/logger_stub_test.rb", "test/test_helper.rb"]
