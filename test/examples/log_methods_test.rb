@@ -6,10 +6,16 @@ class MyClass
   end
 end
 
+module MyModule; end
+
 describe "MyClass, with loggable mix-in" do
   
   before(:each) do
     @logger = mock()
+  end
+  
+  after(:each) do
+    MyClass.logger = nil
   end
   
   it "should have a logger stub by default" do
@@ -29,6 +35,20 @@ describe "MyClass, with loggable mix-in" do
   it "should allow access to the logger from an instance" do
     MyClass.logger = @logger
     MyClass.new.logger.should.equal @logger
+  end
+  
+end
+
+describe "MyModule, with loggable mix-in" do
+  
+  it "should have a logger stub by default" do
+    MyModule.logger.should.be.an.instance_of(LoggerStub)
+  end
+  
+  it "should be able to log messages" do
+    logger = mock {|m| m.expects(:debug).with('blip') }
+    MyModule.logger = logger
+    MyModule.logger.debug('blip')
   end
   
 end

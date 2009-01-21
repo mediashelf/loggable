@@ -4,6 +4,13 @@ require 'loggable/log_methods'
 require 'loggable/logger_stub'
 
 class Object
-  extend Loggable::ClassMethods
   include Loggable::InstanceMethods
+end
+
+class Class
+  include Loggable::ClassMethods
+end
+
+class Module
+  include Loggable::ClassMethods
 end
