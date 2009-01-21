@@ -4,41 +4,35 @@ require 'rake/testtask'
 
 require 'lib/loggable/version'
 
-GEM = "loggable"
-AUTHOR = "Patrick Reagan"
-EMAIL = "patrick.reagan@viget.com"
-HOMEPAGE = "http://viget.rubyforge.org/loggable"
-SUMMARY = "A gem that provides logging capabilities to any class"
-
 task :default => :test
 
 spec = Gem::Specification.new do |s|
-  s.name = GEM
-  s.version = Loggable::VERSION::STRING
-  s.platform = Gem::Platform::RUBY
-  s.has_rdoc = true
-  s.extra_rdoc_files = ["README", "LICENSE"]
-  s.summary = SUMMARY
-  s.description = s.summary
-  s.author = AUTHOR
-  s.email = EMAIL
-  s.homepage = HOMEPAGE
+  s.name              = 'loggable'
+  s.version           = Loggable::Version.to_s
+  s.has_rdoc          = true
+  s.extra_rdoc_files  = %w(README.rdoc)
+  s.rdoc_options      = %w(--main README.rdoc)
+  s.summary           = "A gem that provides logging capabilities to any class"
+  s.author            = 'Patrick Reagan'
+  s.email             = 'patrick.reagan@viget.com'
+  s.homepage          = 'http://viget.com/extend'
   s.rubyforge_project = 'viget'
-  
-  s.require_path = 'lib'
-  s.files = %w(LICENSE README HISTORY Rakefile) + Dir.glob("{lib,test}/**/*")
+  s.files             = %w(README.rdoc Rakefile) + Dir.glob("{lib,test}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
 end
 
-task :install => [:package] do
-  sh %{sudo gem install pkg/#{GEM}-#{VERSION}}
-end
-
 Rake::TestTask.new do |t|
   t.libs << 'test'
-  t.pattern = FileList['test/examples/*_test.rb']
+  t.test_files = FileList["test/**/*_test.rb"]
   t.verbose = true
+end
+
+desc 'Generate the gemspec to serve this Gem from Github'
+task :github do
+  file = File.dirname(__FILE__) + "/#{spec.name}.gemspec"
+  File.open(file, 'w') {|f| f << spec.to_ruby }
+  puts "Created gemspec: #{file}"
 end

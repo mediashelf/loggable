@@ -1,0 +1,81 @@
+= Loggable
+
+Loggable is a gem that's designed to add a logging interface to classes that don't 
+automatically support it.
+
+== Installation
+
+Stable:
+
+  sudo gem install loggable
+  
+Bleeding Edge (hardly):
+
+  sudo gem install vigetlabs-loggable --source=http://gems.github.com
+
+== Usage
+
+Using the Gem is easy, just assign a new logger to your class:
+
+    require 'rubygems'
+    require 'logger'
+    require 'loggable'
+
+    class MyClass; end
+  
+    MyClass.logger = Logger.new('debug.log')
+
+Now, any class or instance methods have access to the logger:
+
+    class MyClass
+      def self.do_something
+        logger.debug 'doing something in the class'
+      end
+      
+      def do_something
+        logger.debug 'doing something in an instance'
+      end
+    end
+
+The above code will write into the log file when called:
+
+    MyClass.do_something
+    MyClass.new.do_something
+
+    debug.log:
+  
+    D, [2008-04-24T20:37:32.273930 #25821] DEBUG -- : doing something in the class
+    D, [2008-04-24T20:37:32.274062 #25821] DEBUG -- : doing something in an instance
+
+== Removing Logger Functionality
+
+Calling the <tt>logger=</tt> class method to assign a logger to the class will 
+trigger the methods necessary to start logging messages.  If you want to turn off 
+logging temporarily (without removing the logging statements from your class), 
+comment out the line where you assign the new logger.  By default, the logger is
+stubbed out, so any calls to methods on it will just return nil.
+
+== Credits
+
+Copyright (c) 2008 Patrick Reagan of Viget Labs (mailto:patrick.reagan@viget.com)
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
