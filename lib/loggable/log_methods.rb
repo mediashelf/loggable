@@ -15,8 +15,11 @@ module Loggable
       @@logger = logger
     end
     
+    # If RAILS_DEFAULT_LOGGER is defined, that will be returned.
+    # If no logger has been defined, a new STDOUT Logger will be created.
     def logger
-      @@logger || LoggerStub.new
+      # @@logger || LoggerStub.new
+      @@logger ||= defined?(RAILS_DEFAULT_LOGGER) ? RAILS_DEFAULT_LOGGER : ::Logger.new(STDOUT)
     end
     
   end

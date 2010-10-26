@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 
+require 'logger'
 require 'loggable/log_methods'
 require 'loggable/logger_stub'
 

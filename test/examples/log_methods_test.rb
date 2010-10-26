@@ -15,7 +15,7 @@ class LogMethodsTest < Test::Unit::TestCase
     teardown { MyClass.logger = nil}
 
     should "have a logger stub by default" do
-      MyClass.logger.should be_kind_of(LoggerStub)
+      MyClass.logger.should be_instance_of(Logger)
     end
 
     should "not fail when an instance calls an uninitialized logger" do
@@ -39,7 +39,7 @@ class LogMethodsTest < Test::Unit::TestCase
 
     should "have a logger stub by default" do
       MyModule.logger = nil
-      MyModule.logger.should be_kind_of(LoggerStub)
+      MyModule.logger.should be_kind_of(Logger)
     end
 
     should "be able to log messages" do
