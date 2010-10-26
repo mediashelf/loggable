@@ -2,37 +2,39 @@ require 'rubygems'
 require 'rake/gempackagetask'
 require 'rake/testtask'
 
-require 'lib/loggable/version'
-
-task :default => :test
-
-spec = Gem::Specification.new do |s|
-  s.name              = 'loggable'
-  s.version           = Loggable::Version.to_s
-  s.has_rdoc          = true
-  s.extra_rdoc_files  = %w(README.rdoc)
-  s.rdoc_options      = %w(--main README.rdoc)
-  s.summary           = "A gem that provides logging capabilities to any class"
-  s.author            = 'Patrick Reagan'
-  s.email             = 'patrick.reagan@viget.com'
-  s.homepage          = 'http://viget.com/extend'
-  s.rubyforge_project = 'viget'
-  s.files             = %w(README.rdoc Rakefile) + Dir.glob("{lib,test}/**/*")
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "mediashelf-loggable"
+    gem.summary = %Q{A gem that provides logging capabilities to any class}
+    gem.description = %Q{A gem that provides logging capabilities to any class.  Relies on Rails logger if it's available.  Extended from loggable gem by viget}
+    gem.email = "matt.zumwalt@yourmediashelf.com"
+    gem.homepage = "http://github.com/mediashelf/mediashelf-loggable"
+    gem.authors = ['Patrick Reagan',"Matt Zumwalt"]
+    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/*_test.rb'
+  test.verbose = true
 end
 
-Rake::TestTask.new do |t|
-  t.libs << 'test'
-  t.test_files = FileList["test/**/*_test.rb"]
-  t.verbose = true
-end
-
-desc 'Generate the gemspec to serve this Gem from Github'
-task :github do
-  file = File.dirname(__FILE__) + "/#{spec.name}.gemspec"
-  File.open(file, 'w') {|f| f << spec.to_ruby }
-  puts "Created gemspec: #{file}"
+begin
+  require 'rcov/rcovtask'
+  Rcov::RcovTask.new do |test|
+    test.libs << 'test'
+    test.pattern = 'test/**/*_test.rb'
+    test.verbose = true
+  end
+rescue LoadError
+  task :rcov do
+    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
+  end
 end
