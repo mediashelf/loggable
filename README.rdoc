@@ -3,10 +3,10 @@
 Loggable is a gem that's designed to add a logging interface to classes that don't 
 automatically support it.
 
-This is a fork of vigetlabs/loggable with two minor changes:
+This is a fork of {vigetlabs/loggable}[http://github.com/vigetlabs/loggable] with two minor changes:
 
-1) It uses the Rails default logger if it's available
-2) defaults to using STDOUT if you don't tell it otherwise
+# It uses the Rails default logger if it's available
+# defaults to using STDOUT if you don't tell it otherwise
 
 In short, it lets you set up a logger with _even less_ code than the vigetlabs logger.
 
