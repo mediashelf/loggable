@@ -22,12 +22,12 @@ Stable:
 
 Using the Gem is super easy, just include the Logger module into any of your classes
 
-require 'rubygems'
-require 'loggable'
+  require 'rubygems'
+  require 'loggable'
 
-class MyClass
-  include Loggable
-end
+  class MyClass
+    include Loggable
+  end
 
 Now, any class or instance methods have access to a logger:
 
