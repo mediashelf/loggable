@@ -3,19 +3,49 @@
 Loggable is a gem that's designed to add a logging interface to classes that don't 
 automatically support it.
 
+This is a fork of vigetlabs/loggable with two minor changes:
+
+1) It uses the Rails default logger if it's available
+2) defaults to using STDOUT if you don't tell it otherwise
+
+In short, it lets you set up a logger with _even less_ code than the vigetlabs logger.
+
 == Installation
 
 Stable:
 
-  sudo gem install loggable
-  
-Bleeding Edge (hardly):
-
-  sudo gem install vigetlabs-loggable --source=http://gems.github.com
+  sudo gem install mediashelf-loggable
 
 == Usage
 
-Using the Gem is easy, just assign a new logger to your class:
+=== The Super Lazy Way
+
+Using the Gem is super easy, just include the Logger module into any of your classes
+
+require 'rubygems'
+require 'loggable'
+
+class MyClass
+  include Loggable
+end
+
+Now, any class or instance methods have access to a logger:
+
+    class MyClass
+      def self.do_something
+        logger.debug 'doing something in the class'
+      end
+      
+      def do_something
+        logger.debug 'doing something in an instance'
+      end
+    end
+    
+If this code is running within a Rails app that has RAILS_DEFAULT_LOGGER set up, it will use that.  Otherwise, it will create a standard Ruby logger that prints to STDOUT.
+
+=== When You Need More Control...
+
+If you want to have more control (ie. you want to save logs to a file), you can manually assign a  logger to your class:
 
     require 'rubygems'
     require 'logger'
