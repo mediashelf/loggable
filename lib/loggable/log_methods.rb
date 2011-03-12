@@ -19,7 +19,7 @@ module Loggable
     # If no logger has been defined, a new STDOUT Logger will be created.
     def logger
       # @@logger || LoggerStub.new
-      @@logger ||= defined?(RAILS_DEFAULT_LOGGER) ? RAILS_DEFAULT_LOGGER : ::Logger.new(STDOUT)
+      @@logger ||= !::Rails.logger.nil? ? ::Rails.logger : ::Logger.new(STDOUT)
     end
     
   end
