@@ -1,3 +1,7 @@
+0.4.2
+
+Fixed bug in the line that checks for ::Rails.logger
+
 0.4.1
 
 Removed use of RAILS_DEFAULT_LOGGER constant, relying on ::Rails.logger instead
