@@ -2,7 +2,7 @@ desc "Task to execute builds on a Hudson Continuous Integration Server."
 task :hudson do
   Rake::Task["loggable:doc"].invoke
   Rake::Task["loggable:rcov"].invoke
-  Rake::Task["loggabe:test"].invoke
+  Rake::Task["loggable:test"].invoke
 end
 
 namespace :loggable do    
@@ -24,7 +24,7 @@ namespace :loggable do
     YARD::Rake::YardocTask.new(:doc) do |yt|
       yt.files   = Dir.glob(File.join(project_root, 'lib', '**', '*.rb')) + 
                    [ File.join(project_root, 'README.rdoc') ]
-      yt.options = ['--output-dir', doc_destination, '--readme', 'README.textile']
+      yt.options = ['--output-dir', doc_destination, '--readme', 'README.rdoc']
     end
   rescue LoadError
     desc "Generate YARD Documentation"
