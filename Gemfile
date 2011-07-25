@@ -9,4 +9,6 @@ group :development, :test do
   gem "rcov"
   gem "yard"
   gem "RedCloth"
+  gem "ruby-debug"
 end
+

@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.7)
+    columnize (0.3.4)
     gemcutter (0.6.1)
     git (1.2.5)
     jeweler (1.4.0)
@@ -10,10 +11,18 @@ GEM
       rubyforge (>= 2.0.0)
     jnunemaker-matchy (0.4.0)
     json_pure (1.4.6)
+    linecache (0.46)
+      rbx-require-relative (> 0.0.4)
     mocha (0.9.9)
       rake
     rake (0.8.7)
+    rbx-require-relative (0.0.5)
     rcov (0.9.9)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     rubyforge (2.0.4)
       json_pure (>= 1.1.7)
     thoughtbot-shoulda (2.11.1)
@@ -28,5 +37,6 @@ DEPENDENCIES
   jnunemaker-matchy
   mocha
   rcov
+  ruby-debug
   thoughtbot-shoulda
   yard

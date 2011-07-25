@@ -51,4 +51,27 @@ class LogMethodsTest < Test::Unit::TestCase
     end
 
   end
+  
+  context "MyModule in Rails3" do
+    setup do
+      class ::Rails
+        def self.logger
+          return "I'm a Rails Logger."
+        end
+      end 
+    end
+    
+    teardown do
+      Object.send(:remove_const, :Rails)
+    end
+    
+    should "use Rails logger" do
+      MyModule.logger = nil
+      MyModule.logger.should == Rails.logger
+    end
+    should "switch to using Rails logger even if a default logger was already defined" do
+      MyModule.logger = Logger.new(STDOUT)
+      MyModule.logger.should == Rails.logger
+    end
+  end
 end
