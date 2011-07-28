@@ -1,6 +1,5 @@
 source "http://rubygems.org"
 
-
 group :development, :test do
   gem "jeweler"
   gem "mocha"
@@ -12,3 +11,4 @@ group :development, :test do
   gem "ruby-debug"
 end
 
+gemspec

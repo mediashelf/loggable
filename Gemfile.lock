@@ -13,6 +13,7 @@ GEM
     json_pure (1.4.6)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
+    logger (1.2.8)
     mocha (0.9.9)
       rake
     rake (0.8.7)
@@ -35,6 +36,7 @@ DEPENDENCIES
   RedCloth
   jeweler
   jnunemaker-matchy
+  logger
   mocha
   rcov
   ruby-debug

@@ -1,3 +1,7 @@
+0.4.3
+
+Don't use this version.  It will raise "stack trace too deep" errors in some cases
+
 0.4.2
 
 Fixed bug in the line that checks for ::Rails.logger
