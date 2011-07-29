@@ -19,10 +19,10 @@ module Loggable
     # If no logger has been defined, a new STDOUT Logger will be created.
     def logger
       
-      if defined?(::Rails) && Rails.respond_to?(:version)
-        if Rails.version >= "3.0" && defined?(::Rails::Application) && !::Rails.logger.nil?
+      if defined?(::Rails) && ::Rails.respond_to?(:version)
+        if ::Rails.version >= "3.0" && defined?(::Rails::Application) && !::Rails.logger.nil?
           @@logger = ::Rails.logger
-        elsif defined?(RAILS_DEFAULT_LOGGER)
+        elsif ::Rails.version < "3.0"
           @@logger = RAILS_DEFAULT_LOGGER
         end
       end

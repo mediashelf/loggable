@@ -1,3 +1,7 @@
+h2. 0.4.6
+
+Even Cleaner implementation of Rails3 compatibility.  Small change, big gain.  Recommended for upgrade.
+
 h2. 0.4.5
 
 Cleaner implementation of Rails2/Rails3 compatibility
