@@ -11,4 +11,4 @@ group :development, :test do
   gem "ruby-debug"
 end
 
-gemspec
+gemspec 

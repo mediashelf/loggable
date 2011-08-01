@@ -68,40 +68,6 @@ class LogMethodsTest < Test::Unit::TestCase
     end
   end
     
-  
-  context "MyModule in Rails2" do
-    setup do
-      class ::Rails
-        def self.version
-          return "2.8.5"
-        end
-      end 
-      module ::ActiveSupport 
-        class BufferedLogger
-          def initialize(arg)
-          end
-        end
-      end
-      Object.const_set(:RAILS_DEFAULT_LOGGER, ActiveSupport::BufferedLogger.new(STDOUT))
-      # ::RAILS_DEFAULT_LOGGER = 
-    end
-    
-    teardown do
-      Object.send(:remove_const, :Rails)
-      Object.send(:remove_const, :ActiveSupport)
-      Object.send(:remove_const, :RAILS_DEFAULT_LOGGER)
-    end
-    
-    should "use Rails2 logger" do
-      MyModule.logger = nil
-      MyModule.logger.should == ::RAILS_DEFAULT_LOGGER
-    end
-    should "switch to using Rails2 logger even if a default logger was already defined" do
-      MyModule.logger = Logger.new(STDOUT)
-      MyModule.logger.should == ::RAILS_DEFAULT_LOGGER
-    end
-  end
-  
   context "MyModule in Rails3" do
     setup do
       module ::Rails

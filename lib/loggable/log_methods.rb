@@ -20,10 +20,8 @@ module Loggable
     def logger
       
       if defined?(::Rails) && ::Rails.respond_to?(:version)
-        if ::Rails.version >= "3.0" && defined?(::Rails::Application) && !::Rails.logger.nil?
+        if ::Rails.version >= "2.1" && !::Rails.logger.nil?
           @@logger = ::Rails.logger
-        elsif ::Rails.version < "3.0"
-          @@logger = RAILS_DEFAULT_LOGGER
         end
       end
       
