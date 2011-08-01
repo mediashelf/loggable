@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mediashelf-loggable}
-  s.version = "0.4.6"
+  s.version = "0.4.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Patrick Reagan}, %q{Matt Zumwalt}]
-  s.date = %q{2011-07-29}
+  s.date = %q{2011-08-01}
   s.description = %q{A gem that provides logging capabilities to any class.  Relies on Rails logger if it's available.  Extended from loggable gem by viget}
   s.email = %q{matt.zumwalt@yourmediashelf.com}
   s.extra_rdoc_files = [
@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
      "lib/loggable/log_methods.rb",
      "lib/loggable/logger_stub.rb",
      "lib/tasks/loggable.rake",
-     "loggable.gemspec",
      "mediashelf-loggable.gemspec",
      "test/examples/log_methods_test.rb",
      "test/examples/logger_stub_test.rb",
