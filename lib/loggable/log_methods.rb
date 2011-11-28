@@ -2,8 +2,6 @@ module Loggable
   
   module ClassMethods
     
-    @@logger = nil
-    
     # Use this method on any of your classes to trigger the logging facility:
     #
     #   MyClass.logger = Logger.new('/path/to/logfile')
