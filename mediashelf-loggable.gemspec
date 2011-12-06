@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = Loggable.version
   s.authors = ["Patrick Reagan", "Matt Zumwalt"]
   s.email = %q{matt.zumwalt@yourmediashelf.com}
-  s.homepage = %q{http://github.com/mediashelf/mediashelf-loggable}
+  s.homepage = %q{http://github.com/mediashelf/loggable}
   s.summary = %q{A gem that provides logging capabilities to any class}
   s.description = %q{A gem that provides logging capabilities to any class.  Relies on Rails logger if it's available.  Extended from loggable gem by viget}
   s.files         = `git ls-files`.split("\n")
