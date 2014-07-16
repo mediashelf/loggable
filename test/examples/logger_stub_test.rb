@@ -7,7 +7,7 @@ class LoggerStubTest < Test::Unit::TestCase
 
     should "return nil for all standard logging methods" do
       [:debug, :error, :fatal, :info, :warn].each do |method|
-        @logger.send(method, 'message').should be(nil)
+        assert_nil @logger.send(method, 'message')
       end
     end
 

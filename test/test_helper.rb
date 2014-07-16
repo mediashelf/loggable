@@ -1,9 +1,7 @@
 require 'rubygems'
 require 'test/unit'
-require 'mocha'
 require 'shoulda'
-require 'matchy'
-require "ruby-debug"
+require 'mocha/test_unit'
 
 require File.dirname(__FILE__) + '/../lib/loggable'
 

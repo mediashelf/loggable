@@ -15,22 +15,22 @@ class LogMethodsTest < Test::Unit::TestCase
     teardown { MyClass.logger = nil}
 
     should "have a logger stub by default" do
-      MyClass.logger.should be_instance_of(Logger)
+      assert_instance_of Logger, MyClass.logger
     end
 
     should "not fail when an instance calls an uninitialized logger" do
       m = MyClass.new
-      lambda { m.logged_method }.should_not raise_error
+      assert_nothing_raised { m.logged_method }
     end
 
     should "allow the asssignment of a logger" do
       MyClass.logger = @logger
-      MyClass.logger.should == @logger
+      assert_equal MyClass.logger, @logger
     end
 
     should "allow access to the logger from an instance" do
       MyClass.logger = @logger
-      MyClass.new.logger.should == @logger
+      assert_equal MyClass.new.logger, @logger
     end
 
   end
@@ -39,7 +39,7 @@ class LogMethodsTest < Test::Unit::TestCase
 
     should "have a logger stub by default" do
       MyModule.logger = nil
-      MyModule.logger.should be_kind_of(Logger)
+      assert_kind_of Logger, MyModule.logger
     end
 
     should "be able to log messages" do
@@ -64,7 +64,7 @@ class LogMethodsTest < Test::Unit::TestCase
     
     should "use the default logger" do
       MyModule.logger = nil
-      MyModule.logger.should be_kind_of(Logger)
+      assert_kind_of Logger, MyModule.logger
     end
   end
     
@@ -87,11 +87,11 @@ class LogMethodsTest < Test::Unit::TestCase
     
     should "use Rails3 logger" do
       MyModule.logger = nil
-      MyModule.logger.should == Rails.logger
+      assert_equal MyModule.logger, Rails.logger
     end
     should "switch to using Rails3 logger even if a default logger was already defined" do
       MyModule.logger = Logger.new(STDOUT)
-      MyModule.logger.should == Rails.logger
+      assert_equal MyModule.logger, Rails.logger
     end
   end
 end

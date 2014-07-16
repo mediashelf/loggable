@@ -11,18 +11,19 @@ Gem::Specification.new do |s|
   s.summary = %q{A gem that provides logging capabilities to any class}
   s.description = %q{A gem that provides logging capabilities to any class.  Relies on Rails logger if it's available.  Extended from loggable gem by viget}
   s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {spec}/*`.split("\n")
+  s.test_files    = `git ls-files -- {test}/*`.split("\n")
   # s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
   s.required_rubygems_version = ">= 1.3.6"
 
 
-  s.add_development_dependency "rspec", "< 2.0" # We're not ready to upgrade to rspec 2
-  s.add_development_dependency 'mocha'
-  s.add_development_dependency 'rcov'
-  s.add_development_dependency 'thoughtbot-shoulda'
-  s.add_development_dependency 'jnunemaker-matchy'
-  s.add_development_dependency 'yard', '0.6.5'  # Yard > 0.6.5 won't generate docs.
+  s.add_development_dependency "rake"
+  s.add_development_dependency 'yard'
   s.add_development_dependency 'RedCloth'
+  s.add_development_dependency 'test-unit'
+  s.add_development_dependency 'minitest', '~> 4.0'
+  s.add_development_dependency 'mocha', '~> 1.0'
+  s.add_development_dependency 'thoughtbot-shoulda'
+  
 end

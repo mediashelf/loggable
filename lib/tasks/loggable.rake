@@ -1,7 +1,6 @@
 desc "Task to execute builds on a Hudson Continuous Integration Server."
 task :hudson do
   Rake::Task["loggable:doc"].invoke
-  Rake::Task["loggable:rcov"].invoke
   Rake::Task["loggable:test"].invoke
 end
 
@@ -31,14 +30,5 @@ namespace :loggable do
     task :doc do
       abort "Please install the YARD gem to generate rdoc."
     end
-  end
-
-  require 'rcov/rcovtask'
-
-  desc "Create a cross-referenced code coverage report."
-  Rcov::RcovTask.new(:rcov) do |t|
-    t.libs << "test"
-    t.test_files = FileList['test/**/*_test.rb']
-    t.rcov_opts << "--exclude \"gems/*\" --rails" 
   end
 end
