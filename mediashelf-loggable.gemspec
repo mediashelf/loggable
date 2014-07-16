@@ -4,7 +4,7 @@ require 'loggable/version'
 
 Gem::Specification.new do |s|
   s.name = %q{mediashelf-loggable}
-  s.version = Loggable.version
+  s.version = Loggable::VERSION
   s.authors = ["Patrick Reagan", "Matt Zumwalt"]
   s.email = %q{matt.zumwalt@yourmediashelf.com}
   s.homepage = %q{http://github.com/mediashelf/loggable}
